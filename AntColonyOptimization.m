@@ -35,7 +35,7 @@ for i = 1:conf.population
 end
 
 doPlot = 1;
-[bestTour bestCost] = doAntColonyOptimization(map,agents,conf);
+[bestTour bestCost bestCosts] = doAntColonyOptimization(map,agents,conf);
 
 %% --- measure end
 allvars = whos;
@@ -57,3 +57,14 @@ if doPlot == 1
   hold off
 end
 bestCost
+
+unpoko.conf = conf
+unpoko.conf = exec_time
+unpoko.conf = memcost
+unpoko.conf = bestTour
+unpoko.conf = bestCosts
+
+
+
+
+

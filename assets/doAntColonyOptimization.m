@@ -1,4 +1,4 @@
-function [bestTour bestCost] = doAntColonyOptimization(map,agents,conf);
+function [bestTour, bestCost, bestCosts] = doAntColonyOptimization(map,agents,conf);
   %% initialize
   population = size(agents,1);
   acidMap       = getUpdatedAcidMap(triu(NaN(map.nStops,map.nStops))',agents,conf.evaporationRate,conf.acidQuantity);

@@ -34,7 +34,7 @@ for i = 1:conf.population
 end
 
 doPlot = 1;
-[bestTour, bestCost, agents] = doGeneticAlgorithm(map,agents,conf,doPlot);
+[bestTour, bestCost, agents, eachBetterCosts] = doGeneticAlgorithm(map,agents,conf,doPlot);
 
 %% --- end measure
 allvars = whos;

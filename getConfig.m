@@ -23,14 +23,13 @@ function conf = getConfig( method , nStops)
 
   %% Genetic Algorithm
   if strcmp(method,'GeneticAlgorithm')
-%    conf.population = nStops*10;
-    conf.population = 10;
+    conf.population = nStops*10;
     conf.genotype = 'Permutation';
     conf.kill.type ='Truncation';% Only had implemented 'Truncation'
-    conf.kill.rate = 0.5;
+    conf.kill.rate = 0.8;
     conf.select.type = 'Roulette'; % Only had implemented 'Roulette'
     conf.crossover.type = 'One-point'; % Only had implemented 'One-point'
-    conf.crossover.border = nStops * 0.4;
+    conf.crossover.border = nStops * 0.5;
     conf.crossover.rate = 0.98;
     conf.crossover.parents = 2;
     % mutationRate = 1 - crossoverRate;
@@ -40,11 +39,17 @@ function conf = getConfig( method , nStops)
   %% Ant Colony Optimization
   if strcmp(method,'AntColonyOptimization')
     %% --- params of Ants
-    conf.population = nStops; % agent is 🐜
+    conf.population = nStops * 10; % agent is 🐜
     conf.gobackTimes = 199;
-    conf.evaporationRate = 0.80;
+    conf.evaporationRate = 0.90;
     conf.acidQuantity = 10;
+    conf.heurisPow = 4;
     conf.acidPow = 1;
-    conf.heurisPow = 2.5;
+  end
+
+  %% adaptive Two Layered Hybrid Algorithm
+  if strcmp(method,'a-TLHA')
+    conf.local = getConfig('TabuSearch' , nStops);
+    conf.ga = getConfig('GeneticAlgorithm' , nStops);
   end
 end

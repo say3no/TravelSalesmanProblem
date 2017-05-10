@@ -1,4 +1,4 @@
-function [bestTour, bestCost, agents] = doGeneticAlgorithm(map,agents,conf,doPlot);
+function [bestTour, bestCost, agents, eachBetterCosts] = doGeneticAlgorithm(map,agents,conf,doPlot);
   eachBetterCosts = zeros(conf.generations,1);
   border = conf.population - (conf.population * conf.kill.rate); % 上から何番目
   agents = sortrows(agents,map.nStops + 1);
